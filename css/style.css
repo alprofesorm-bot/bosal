@@ -442,11 +442,11 @@ body {
 .card-img {
     background: var(--bg-soft);
     border-radius: 13px;
-    padding: 14px 8px;
+    padding: 6px 4px;
     margin-bottom: 12px;
     display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden;
-    transition: var(--transition);
+    height: 165px;
 }
 .card-img::after {
     content: "";
@@ -456,11 +456,13 @@ body {
 }
 .card:hover .card-img { background: rgba(201,162,75,.08); }
 .card img {
-    width: 100%; max-width: 130px; height: 110px;
-    object-fit: contain; position: relative; z-index: 1;
+    width: 100%; height: 100%;
+    object-fit: cover; position: relative; z-index: 1;
     filter: drop-shadow(0 6px 10px rgba(27,67,50,.12));
     transition: var(--transition);
+    border-radius: 8px;
 }
+.card img:not([src]), .card img[src=""] { display: none; }
 .card:hover img { transform: scale(1.1); }
 
 .card .brand {

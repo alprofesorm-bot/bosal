@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>بوصلة | الوجهة الأولى والدقيقة لكل ما تحتاجه الأسرة من مؤونة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="announce">
+    <i class="fa-solid fa-truck-fast" style="margin-left:6px;"></i> توصيل سريع لصحنايا وأشرفية صحنايا <b>• الدفع عند الاستلام</b>
+</div>
+
+<header class="header">
+    <div class="wrap header-grid">
+        <a class="logo" href="#">
+            <div class="logo-badge"><i class="fa-solid fa-compass"></i></div>
+            <div>بوصلة<span class="small">لتأمين دارك</span></div>
+        </a>
+        <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="search" type="search" placeholder="ابحث عن منتج، حبوب، معلبات...">
+            <button id="clear"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <button id="openCart" class="cart-btn"><i class="fa-solid fa-shopping-bag"></i> <span>السلة</span> <b id="cartCount">0</b></button>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="wrap wrap-hero">
+        <span class="hero-badge"><i class="fa-solid fa-award"></i> منصة تأمين المؤونة الأولى في منطقتك</span>
+        <h1>الوجهة <span>الأولى والدقيقة</span> لكل ما تحتاجه الأسرة من مؤونة</h1>
+        <p>نوفر لك الأرز، البقوليات، المعلبات، المنظفات وكل مستلزمات البيت بجودة موثوقة وسعر منافس - اطلبها الآن بطلب واحد سريع وسهل.</p>
+        <div class="hero-cta">
+            <a href="#products" class="hero-btn">تصفح المنتجات الآن <i class="fa-solid fa-arrow-left"></i></a>
+            <a href="#" class="hero-btn ghost" onclick="document.getElementById('openCart').click(); return false;"><i class="fa-solid fa-basket-shopping"></i> اطلب احتياجك</a>
+        </div>
+        <div class="hero-stats">
+            <span class="stat"><i class="fa-solid fa-boxes-stacked"></i> <b>+269</b> منتج متنوع</span>
+            <span class="stat"><i class="fa-solid fa-truck-fast"></i> توصيل <b>من 70 ل.س</b></span>
+            <span class="stat"><i class="fa-solid fa-hand-holding-dollar"></i> <b>الدفع</b> عند الاستلام</span>
+        </div>
+    </div>
+</section>
+
+<main id="products" class="wrap main">
+    <div class="top">
+        <div>
+            <small style="color:var(--muted)">دليل المنتجات</small>
+            <h2>كل الأقسام</h2>
+        </div>
+        <div class="tools">
+            <span id="count" style="font-size: 13px; color:var(--muted);"></span>
+            <select id="sort">
+                <option value="default">الترتيب الافتراضي</option>
+                <option value="low">السعر: الأقل أولاً</option>
+                <option value="high">السعر: الأعلى أولاً</option>
+                <option value="az">الاسم: أ - ي</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="cats" class="cats">
+        <button class="active" data-cat="all"><i class="fa-solid fa-border-all"></i> الكل</button>
+        <button data-cat="rice"><i class="fa-solid fa-bowl-rice"></i> الأرز</button>
+        <button data-cat="grains"><i class="fa-solid fa-wheat-awn"></i> الحبوب والبقوليات</button>
+        <button data-cat="canned"><i class="fa-solid fa-box-open"></i> المعلبات</button>
+        <button data-cat="vegetables"><i class="fa-solid fa-carrot"></i> الخضار</button>
+        <button data-cat="meat"><i class="fa-solid fa-drumstick-bite"></i> اللحوم</button>
+        <button data-cat="restaurants"><i class="fa-solid fa-utensils"></i> مطاعم</button>
+        <button data-cat="dairy"><i class="fa-solid fa-cheese"></i> أجبان وألبان</button>
+        <button data-cat="cleaners"><i class="fa-solid fa-spray-can-sparkles"></i> المنظفات</button>
+    </div>
+
+    <section class="all-sections-banner" id="allSectionsBanner">
+        <div class="cleaners-banner">
+            <div class="cleaners-logo"><div class="cleaners-logo-mark"><i class="fa-solid fa-compass"></i></div><div class="cleaners-logo-text"><strong>بوصلة</strong><span>كل احتياجاتك في مكان واحد</span></div></div>
+            <div class="cleaners-banner-copy"><h3>كل احتياجاتك في مكان واحد</h3><p>أرز، بقوليات، معلبات، منظفات، لحوم وأكثر — تصفح جميع الأقسام واطلب ما تحتاجه.</p><button class="cleaners-btn" id="showAllSections">تصفح جميع الأقسام <i class="fa-solid fa-arrow-left"></i></button></div>
+        </div>
+    </section>
+
+    <div id="grid" class="grid"></div>
+
+    <div id="empty" class="empty hidden">
+        <i class="fa-solid fa-box-open" style="font-size: 34px;"></i>
+        <h3>لا توجد نتائج مطابقة أو القسم فارغ حالياً</h3>
+        <p style="color:var(--muted); font-size:13.5px;">جرّب كلمة بحث أخرى أو تصفح الأقسام الأخرى.</p>
+        <button id="reset">عرض كل المنتجات</button>
+    </div>
+
+    <div class="missing-box">
+        <h3>هل تبحث عن منتج معين وغير موجود في الموقع؟</h3>
+        <p>اكتب لنا اسم المنتج وسوف نوفره لك فوراً ونرسل لك تفاصيله عبر الواتساب!</p>
+        <div class="missing-input-group">
+            <input type="text" id="missingProductInput" placeholder="اكتب اسم المنتج أو الطلب هنا...">
+            <button onclick="window.sendMissingProduct()"><i class="fa-brands fa-whatsapp"></i> اطلب المنتج</button>
+        </div>
+    </div>
+</main>
+
+<footer class="wrap">
+    <div class="footer">
+        <div>
+            <div class="f-logo">
+                <div class="logo-badge"><i class="fa-solid fa-compass"></i></div> بوصلة
+            </div>
+            <p>بوصلتك الموثوقة لتأمين مؤونة البيت. نقدم أفضل المنتجات بأسعار منافسة وتوصيل سريع لمنطقتي صحنايا وأشرفية صحنايا مع خيار الدفع عند الاستلام.</p>
+        </div>
+        <div>
+            <h4>معلومات التواصل</h4>
+            <ul>
+                <li><i class="fa-brands fa-whatsapp"></i> <span>واتساب: 963958953282+</span></li>
+                <li><i class="fa-solid fa-location-dot"></i> <span>صحنايا - ريف دمشق</span></li>
+                <li><i class="fa-solid fa-truck-fast"></i> <span>توصيل لصحنايا وأشرفية صحنايا</span></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/963958953282" id="floatingWaBtn" target="_blank" class="whatsapp-float" aria-label="تواصل معنا عبر واتساب">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<div id="toast" class="toast"><i class="fa-solid fa-circle-check"></i> تم تحديث السلة بنجاح</div>
+<div id="overlay" class="overlay"></div>
+
+<aside id="drawer" class="drawer">
+    <div class="drawer-head">
+        <div>
+            <small>طلبك المميز</small>
+            <h2>سلة التسوق <em id="drawerCount">0</em></h2>
+        </div>
+        <button id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="items" class="items"></div>
+    <div class="checkout-box">
+        <div class="checkout-note">
+            اختر منطقة التوصيل لتحديد السعر تلقائياً
+        </div>
+
+        <select id="deliveryArea" onchange="window.updateCart()">
+            <option value="صحنايا">صحنايا (70 ل.س)</option>
+            <option value="أشرفية صحنايا">أشرفية صحنايا (1200 ل.س)</option>
+        </select>
+
+        <div class="total-line"><span>المجموع</span><strong id="total">0 ل.س</strong></div>
+        <input id="custName" placeholder="الاسم الكامل">
+        <span id="nameError" class="form-error">يرجى إدخال الاسم</span>
+        <input id="custAddress" placeholder="العنوان بالتفصيل">
+        <span id="addressError" class="form-error">يرجى إدخال العنوان</span>
+        <button id="send" class="send"><i class="fa-brands fa-whatsapp" style="font-size: 19px;"></i> ارسال الطلب واتس اب</button>
+        <small style="color:var(--muted); text-align:center; font-size:11px;">سيتم إنشاء رسالة الطلب تلقائياً.</small>
+    </div>
+</aside>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>

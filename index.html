@@ -41,7 +41,7 @@
             <a href="#" class="hero-btn ghost" onclick="document.getElementById('openCart').click(); return false;"><i class="fa-solid fa-basket-shopping"></i> اطلب احتياجك</a>
         </div>
         <div class="hero-stats">
-            <span class="stat"><i class="fa-solid fa-boxes-stacked"></i> <b>+269</b> منتج متنوع</span>
+            <span class="stat"><i class="fa-solid fa-boxes-stacked"></i> <b>+480</b> منتج متنوع</span>
             <span class="stat"><i class="fa-solid fa-truck-fast"></i> توصيل <b>من 70 ل.س</b></span>
             <span class="stat"><i class="fa-solid fa-hand-holding-dollar"></i> <b>الدفع</b> عند الاستلام</span>
         </div>
@@ -49,6 +49,16 @@
 </section>
 
 <main id="products" class="wrap main">
+    <div class="missing-box">
+        <div class="missing-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+        <h3>هل تبحث عن منتج معين وغير موجود في الموقع؟</h3>
+        <p>اكتب لنا اسم المنتج وسوف نوفره لك فوراً ونرسل لك تفاصيله عبر الواتساب!</p>
+        <div class="missing-input-group">
+            <input type="text" id="missingProductInput" placeholder="اكتب اسم المنتج أو الطلب هنا...">
+            <button onclick="window.sendMissingProduct()"><i class="fa-brands fa-whatsapp"></i> اطلب المنتج</button>
+        </div>
+    </div>
+
     <div class="top">
         <div>
             <small style="color:var(--muted)">دليل المنتجات</small>
@@ -75,6 +85,12 @@
         <button data-cat="restaurants"><i class="fa-solid fa-utensils"></i> مطاعم</button>
         <button data-cat="dairy"><i class="fa-solid fa-cheese"></i> أجبان وألبان</button>
         <button data-cat="cleaners"><i class="fa-solid fa-spray-can-sparkles"></i> المنظفات</button>
+        <button data-cat="coffee"><i class="fa-solid fa-mug-hot"></i> البن والقهوة</button>
+        <button data-cat="tea"><i class="fa-solid fa-mug-saucer"></i> الشاي والأعشاب</button>
+        <button data-cat="tissues"><i class="fa-solid fa-box-of-tissue"></i> المناديل والمحارم</button>
+        <button data-cat="cereal"><i class="fa-solid fa-bowl-food"></i> حبوب الإفطار</button>
+        <button data-cat="chips"><i class="fa-solid fa-cookie-bite"></i> الشيبس والمقرمشات</button>
+        <button data-cat="sweets"><i class="fa-solid fa-candy-cane"></i> البسكويت والحلويات</button>
     </div>
 
     <section class="all-sections-banner" id="allSectionsBanner">
@@ -93,15 +109,7 @@
         <button id="reset">عرض كل المنتجات</button>
     </div>
 
-    <div class="missing-box">
-        <h3>هل تبحث عن منتج معين وغير موجود في الموقع؟</h3>
-        <p>اكتب لنا اسم المنتج وسوف نوفره لك فوراً ونرسل لك تفاصيله عبر الواتساب!</p>
-        <div class="missing-input-group">
-            <input type="text" id="missingProductInput" placeholder="اكتب اسم المنتج أو الطلب هنا...">
-            <button onclick="window.sendMissingProduct()"><i class="fa-brands fa-whatsapp"></i> اطلب المنتج</button>
-        </div>
-    </div>
-</main>
+    </main>
 
 <footer class="wrap">
     <div class="footer">

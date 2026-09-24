@@ -484,6 +484,40 @@
     let currentCat = 'all';
     let searchTimeout = null;
 
+    const CATEGORY_LABELS = {
+        rice: 'الأرز',
+        grains: 'الحبوب والبقوليات',
+        canned: 'المعلبات',
+        vegetables: 'الخضار',
+        meat: 'اللحوم',
+        restaurants: 'مطاعم',
+        dairy: 'أجبان وألبان',
+        cleaners: 'المنظفات',
+        coffee: 'البن والقهوة',
+        tea: 'الشاي والأعشاب',
+        tissues: 'المناديل والمحارم',
+        cereal: 'كورن فليكس',
+        chips: 'الشيبس والمقرمشات',
+        sweets: 'البسكويت والحلويات'
+    };
+    const CATEGORY_ICONS = {
+        rice: 'fa-solid fa-bowl-rice',
+        grains: 'fa-solid fa-wheat-awn',
+        canned: 'fa-solid fa-box-open',
+        vegetables: 'fa-solid fa-carrot',
+        meat: 'fa-solid fa-drumstick-bite',
+        restaurants: 'fa-solid fa-utensils',
+        dairy: 'fa-solid fa-cheese',
+        cleaners: 'fa-solid fa-spray-can-sparkles',
+        coffee: 'fa-solid fa-mug-hot',
+        tea: 'fa-solid fa-mug-saucer',
+        tissues: 'fa-solid fa-box-of-tissue',
+        cereal: 'fa-solid fa-bowl-food',
+        chips: 'fa-solid fa-cookie-bite',
+        sweets: 'fa-solid fa-candy-cane'
+    };
+    const CATEGORY_ORDER = ['rice', 'grains', 'canned', 'vegetables', 'meat', 'restaurants', 'dairy', 'cleaners', 'coffee', 'tea', 'tissues', 'cereal', 'chips', 'sweets'];
+
     const $ = (sel) => document.querySelector(sel);
     const $$ = (sel) => document.querySelectorAll(sel);
 
@@ -538,6 +572,8 @@
         if (sortVal === 'az') filtered.sort((a, b) => a.name.localeCompare(b.name, 'ar'));
 
         countEl.textContent = `عرض ${filtered.length} منتج`;
+        const topTitleEl = document.querySelector('.top h2');
+        if (topTitleEl) topTitleEl.textContent = CATEGORY_LABELS[currentCat] || 'كل الأقسام';
 
         if (filtered.length === 0) {
             gridEl.innerHTML = '';
@@ -549,7 +585,7 @@
         const fragment = document.createDocumentFragment();
         const tempContainer = document.createElement('div');
 
-        filtered.forEach((p, i) => {
+        function buildCard(p, idx) {
             const cartItem = cart.find(i => i.name === p.name);
             const qty = cartItem ? cartItem.qty : 0;
 
@@ -559,9 +595,8 @@
             } else {
                 actionHTML = `<div class="qty-control"><button onclick="window._addItem('${escapeHtml(p.name).replace(/'/g, "\\'")}', ${p.price}, -1)"><i class="fa-solid fa-minus"></i></button><span>${qty}</span><button onclick="window._addItem('${escapeHtml(p.name).replace(/'/g, "\\'")}', ${p.price}, 1)"><i class="fa-solid fa-plus"></i></button></div>`;
             }
-
-            tempContainer.innerHTML = `
-                <div class="card" style="animation-delay: ${i * 0.05}s">
+            return `
+                <div class="card" style="animation-delay: ${idx * 0.05}s">
                     <div>
                         <div class="card-img"><img src="${p.image}" alt="${escapeHtml(p.alt)}" loading="lazy" onerror="this.src='https://via.placeholder.com/150?text=Bosla'"></div>
                         <div class="brand">${escapeHtml(p.brand)}</div>
@@ -573,9 +608,24 @@
                     </div>
                 </div>
             `;
-            const card = tempContainer.firstElementChild;
-            fragment.appendChild(card);
-        });
+        }
+
+        if (currentCat === 'all') {
+            CATEGORY_ORDER.forEach(cat => {
+                const items = filtered.filter(p => p.category === cat);
+                if (items.length === 0) return;
+                tempContainer.innerHTML = `
+                    <div class="sgroup">
+                        <h3 class="sgroup-title"><i class="${CATEGORY_ICONS[cat]}"></i> ${CATEGORY_LABELS[cat]} <span>${items.length} منتج</span></h3>
+                        <div class="sgroup-grid">${items.map((p, i) => buildCard(p, i)).join('')}</div>
+                    </div>
+                `;
+                fragment.appendChild(tempContainer.firstElementChild);
+            });
+        } else {
+            tempContainer.innerHTML = `<div class="sgroup-grid">${filtered.map((p, i) => buildCard(p, i)).join('')}</div>`;
+            fragment.appendChild(tempContainer.firstElementChild);
+        }
 
         gridEl.innerHTML = '';
         gridEl.appendChild(fragment);

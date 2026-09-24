@@ -394,13 +394,25 @@ body {
 .cats button.active span { color: #fff; }
 
 /* ==================== Grid & Cards ==================== */
-.grid {
+.grid { display: block; }
+.sgroup { margin-bottom: 4px; }
+.sgroup-title {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 17px; font-weight: 900;
+    color: var(--primary);
+    margin: 16px 0 12px;
+    padding-bottom: 9px;
+    border-bottom: 2px solid var(--border);
+}
+.sgroup-title i { color: var(--accent); }
+.sgroup-title span { font-size: 12px; color: var(--muted); font-weight: 700; margin-inline-start: auto; }
+.sgroup-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
 }
 @media (min-width: 768px) {
-    .grid { grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .sgroup-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; }
 }
 
 .card {
